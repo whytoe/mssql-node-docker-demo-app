@@ -11,5 +11,10 @@ pipeline {
         sh 'ls'
       }
     }
+    stage('Slack') {
+      steps {
+        slackSend(message: 'The Build works', baseUrl: 'https://ops-sdc.slack.com', channel: '#development', teamDomain: 'ops-sdc', tokenCredentialId: 'OPS SDC Slack')
+      }
+    }
   }
 }
