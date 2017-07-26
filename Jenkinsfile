@@ -13,7 +13,10 @@ pipeline {
     }
     stage('Slack') {
       steps {
-        slackSend(message: 'The Build works', channel: '#development', teamDomain: 'ops-sdc', token: 'Uoh9bLc1agibcxbUbkUOjoNU')
+        dockerNode(image: 'hello-world', socket: true) {
+          isUnix()
+        }
+        
       }
     }
   }
